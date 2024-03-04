@@ -25,6 +25,8 @@ require_once __DIR__ . "/db.php";
                 <th>Titolo</th>
                 <th>Lingua</th>
                 <th>Valutazione</th>
+                <th>Genere</th>
+                <th>Descrizione</th>
             </thead>
             <tbody>
                 <?php foreach ($productions as $production): ?>
@@ -32,6 +34,8 @@ require_once __DIR__ . "/db.php";
                     <td><?= $production->title ?></td>
                     <td><?= $production->language ?></td>
                     <td><?= $production->vote ?></td>
+                    <td><?= $production->info->gender ?></td>
+                    <td class="text-start"><?= $production->info->description ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
