@@ -31,11 +31,11 @@ require_once __DIR__ . "/db.php";
             <tbody>
                 <?php foreach ($productions as $production): ?>
                 <tr>
-                    <td><?= $production->title ?></td>
-                    <td><?= $production->language ?></td>
-                    <td><?= $production->vote ?></td>
-                    <td><?= $production->info->gender ?></td>
-                    <td class="text-start"><?= $production->info->description ?></td>
+                    <td><?= $production->get_title() ?></td>
+                    <td><?= $production->get_language() ?></td>
+                    <td><?= $production->get_vote() ?></td>
+                    <td><?= $production->get_info_gender() ?></td>
+                    <td class="text-start"><?= $production->get_info_description() ?></td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

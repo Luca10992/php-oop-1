@@ -7,5 +7,14 @@ class Info {
         $this->gender = $gender;
         $this->description = $description;
     }
+
+    public function get_gender(): string
+    {
+        return $this->gender;
+    }
+    public function get_description(): string
+    {
+        return $this->description;
+    }
 }
 ?>
