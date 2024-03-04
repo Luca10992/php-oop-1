@@ -7,7 +7,7 @@ class Production {
     function __construct(string $title, string $language, int $vote) {
         $this->title = $title;
         $this->language = $language;
-        $this->vote = $vote;
+        $this->vote = $vote . "/10";
     }
 }
 ?>

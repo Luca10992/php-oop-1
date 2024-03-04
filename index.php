@@ -1,13 +1,5 @@
 <?php
-require_once __DIR__ . "./models/production.php";
-
-$titanic = new Production("Titanic", "Italiano", 8);
-$fightClub = new Production("Fight Club", "Italiano", 7);
-$zodiac = new Production("Zodiac", "Italiano", 9);
-$harryPotter = new Production("Harry Potter", "Inglese", 8);
-$FastandFurious = new Production("Fast and Furious", "Inglese", 6);
-
-var_dump($titanic, $fightClub, $zodiac, $harryPotter, $FastandFurious);
+require_once __DIR__ . "/db.php";
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +17,26 @@ var_dump($titanic, $fightClub, $zodiac, $harryPotter, $FastandFurious);
 </head>
 
 <body>
+
+    <div class="container text-center">
+        <h1 class="text-primary fw-bold my-5">PHP OOP</h1>
+        <table class="table">
+            <thead>
+                <th>Titolo</th>
+                <th>Lingua</th>
+                <th>Valutazione</th>
+            </thead>
+            <tbody>
+                <?php foreach ($productions as $production): ?>
+                <tr>
+                    <td><?= $production->title ?></td>
+                    <td><?= $production->language ?></td>
+                    <td><?= $production->vote ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 
