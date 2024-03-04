@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "./models/production.php";
+require_once __DIR__ . "/models/production.php";
 
 $titanic = new Production("Titanic", "Italiano", 8);
 $fightClub = new Production("Fight Club", "Italiano", 7);
