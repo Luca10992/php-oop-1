@@ -4,8 +4,8 @@ class SerieTv extends Production {
     public $season;
     public $episode;
 
-    function __construct($title, $language, $vote, $info, $season, $episode) {
-        parent::__construct($title, $language, $vote, $info);
+    function __construct($image, $title, $language, $vote, $info, $season, $episode) {
+        parent::__construct($image, $title, $language, $vote, $info);
         $this->set_season( $season );
         $this->set_episode( $episode );
     }

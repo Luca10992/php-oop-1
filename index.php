@@ -18,43 +18,78 @@ require_once __DIR__ . "/db.php";
 
 <body>
 
-    <div class="container text-center">
-        <h1 class="text-primary fw-bold my-5">PHP OOP</h1>
-        <table class="table">
-            <thead>
-                <th>Titolo</th>
-                <th>Lingua</th>
-                <th>Valutazione</th>
-                <th>Genere</th>
-                <th>Descrizione</th>
-                <th>Profitti</th>
-                <th>Durata</th>
-                <th>Stagioni</th>
-                <th>Episodi</th>
-            </thead>
-            <tbody>
-                <?php foreach ($productions as $production): ?>
-                <tr>
-                    <td><?= $production->title ?></td>
-                    <td><?= $production->language ?></td>
-                    <td><?= $production->vote ?></td>
-                    <td><?= $production->info->genre ?></td>
-                    <td class="text-start"><?= $production->info->description ?></td>
-                    <?php if ($production instanceof Movie): ?>
-                    <td><?= $production->profit ?></td>
-                    <td><?= $production->duration ?></td>
-                    <td>/</td>
-                    <td>/</td>
-                    <?php elseif ($production instanceof SerieTv): ?>
-                    <td>/</td>
-                    <td>/</td>
-                    <td><?= $production->season ?></td>
-                    <td><?= $production->episode ?></td>
-                    <?php endif; ?>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+    <div class="container">
+        <h1 class="text-center text-primary fw-bold my-5">PHP OOP</h1>
+        <div class="row">
+            <?php foreach ($productions as $production): ?>
+            <div class="col-3 mb-2">
+                <div class="card" style="height: 800px">
+                    <div style="height: 60%">
+                        <img style="height: 100%" src="<?= $production->image ?>" class="card-img-top">
+                    </div>
+                    <div class="card-body" style="height: 40%">
+                        <div class="row">
+                            <div class="col-6 p-0">
+                                <ul style="list-style-type: none" class="p-0">
+                                    <li>
+                                        <span class="fw-bold">Titolo:</span> <?= $production->title ?>
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Lingua:</span> <?= $production->language ?>
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Valutazione:</span> <?= $production->vote ?>
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Genere:</span> <?= $production->info->genre ?>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-6 p-0">
+                                <ul style="list-style-type: none" class="p-0">
+                                    <?php if ($production instanceof Movie): ?>
+                                    <li>
+                                        <span class="fw-bold">Profitti:</span> <?= $production->profit ?>
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Durata:</span> <?= $production->duration ?>
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Stagioni:</span> /
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Episodi:</span> /
+                                    </li>
+                                    <?php elseif ($production instanceof SerieTv): ?>
+                                    <li>
+                                        <span class="fw-bold">Profitti:</span> /
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Durata:</span> /
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Stagioni:</span> <?= $production->season ?>
+                                    </li>
+                                    <li>
+                                        <span class="fw-bold">Episodi:</span> <?= $production->episode ?>
+                                    </li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                            <div class="col-12 p-0">
+                                <ul style="list-style-type: none" class="p-0">
+                                    <li>
+                                        <span class="fw-bold">Descrizione:</span> <?= $production->info->description ?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+        </div>
+
     </div>
 
 </body>

@@ -4,8 +4,8 @@ class Movie extends Production {
     public $profit;
     public $duration;
 
-    function __construct($title, $language, $vote, $info, $profit, $duration) {
-        parent::__construct($title, $language, $vote, $info);
+    function __construct($image, $title, $language, $vote, $info, $profit, $duration) {
+        parent::__construct($image, $title, $language, $vote, $info);
         $this->set_profit( $profit );
         $this->set_duration( $duration ) . "min";
     }
@@ -14,7 +14,7 @@ class Movie extends Production {
         if (empty($profit) || !is_numeric($profit)) {
             throw new Exception("Il profitto non può essere vuoto o diverso da un numero");
         } else {
-            $this->profit = $profit . " $";
+            $this->profit = $profit . "mil $";
         }
     }
     public function set_duration($duration) {
