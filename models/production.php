@@ -6,31 +6,32 @@ class Production {
     public $vote;
     public $info;
 
-    function __construct(string $title, string $language, int $vote, Info $info) {
-        $this->title = $title;
-        $this->language = $language;
-        $this->vote = $vote . "/10";
+    function __construct($title, $language, $vote, $info) {
+        $this->set_title( $title );
+        $this->set_language( $language );
+        $this->set_vote( $vote ) . "/10";
         $this->info = $info;
     }
 
-    public function get_title(): string
-    {
-        return $this->title;
+    public function set_title($title) {
+        if (empty($title) || !is_string($title)) {
+            throw new Exception("Il titolo non può essere vuoto o diverso da una stringa");
+        } else {
+            $this->title = $title;
+        }
     }
-    public function get_language(): string
-    {
-        return $this->language;
+    public function set_language($language) {
+        if (empty($language) || !is_string($language)) {
+            throw new Exception("Il linguaggio non può essere vuoto o diverso da una stringa");
+        } else {
+            $this->language = $language;
+        }
     }
-    public function get_vote() {
-        return $this->vote;
+    public function set_vote($vote) {
+        if (empty($vote) || !is_numeric($vote)) {
+            throw new Exception("Il voto non può essere vuoto o diverso da un numero");
+        } else {
+            $this->vote = $vote;
+        }
     }
-    public function get_info_gender(): string
-    {
-        return $this->info?->get_gender();
-    }
-    public function get_info_description(): string
-    {
-        return $this->info?->get_description();
-    }
-}
-?>
+};

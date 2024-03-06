@@ -27,15 +27,30 @@ require_once __DIR__ . "/db.php";
                 <th>Valutazione</th>
                 <th>Genere</th>
                 <th>Descrizione</th>
+                <th>Profitti</th>
+                <th>Durata</th>
+                <th>Stagioni</th>
+                <th>Episodi</th>
             </thead>
             <tbody>
                 <?php foreach ($productions as $production): ?>
                 <tr>
-                    <td><?= $production->get_title() ?></td>
-                    <td><?= $production->get_language() ?></td>
-                    <td><?= $production->get_vote() ?></td>
-                    <td><?= $production->get_info_gender() ?></td>
-                    <td class="text-start"><?= $production->get_info_description() ?></td>
+                    <td><?= $production->title ?></td>
+                    <td><?= $production->language ?></td>
+                    <td><?= $production->vote ?></td>
+                    <td><?= $production->info->genre ?></td>
+                    <td class="text-start"><?= $production->info->description ?></td>
+                    <?php if ($production instanceof Movie): ?>
+                    <td><?= $production->profit ?></td>
+                    <td><?= $production->duration ?></td>
+                    <td>/</td>
+                    <td>/</td>
+                    <?php elseif ($production instanceof SerieTv): ?>
+                    <td>/</td>
+                    <td>/</td>
+                    <td><?= $production->season ?></td>
+                    <td><?= $production->episode ?></td>
+                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
